@@ -13,21 +13,21 @@ import App from "./components/App";
      str=str.replace("-"," ")
      return str.replace(/\s(.)/g, function($1){return $1.toUpperCase();}).replace(/\s/g,'').replace(/^(.)/,function($1){return $1.toLowerCase();});
  }
-function recur(obj){
+function generateComponent(obj){
     let tag = "<"
     tag += toTitleCase(obj.name)+" "
-    if(obj.style!==undefined && Object.keys(obj.style).length>0){
-        let styleKeys = Object.keys(obj.style)
+    if(obj.style!==undefined){
+        let styles = Object.keys(obj.style)
         tag += "style={{"
-        for(let i=0;i<styleKeys.length;i++){
-            tag+=toCamelCase(styleKeys[i])+':"'+obj.style[styleKeys[i]]+'",'
+        for(let i=0;i<styles.length;i++){
+            tag+=toCamelCase(styles[i])+' : "'+obj.style[styles[i]]+'",'
         }
         tag=tag+"}}"
     }
-    if(obj.children !== undefined && obj.children.length>0){
-        tag+=">\n";
+    if(obj.children !== undefined){
+        tag+=">";
         for(let i=0;i<obj.children.length;i++){
-            tag+=recur(obj.children[i])
+            tag+=generateComponent(obj.children[i])
         }
         tag+="</"+toTitleCase(obj.name)+">"
     }else{
@@ -36,7 +36,7 @@ function recur(obj){
     return tag
 }
 function generateCodeFromObject(obj){
-    return recur(obj)
+    return generateComponent(obj)
 }
    
 module.exports=generateCodeFromObject;
