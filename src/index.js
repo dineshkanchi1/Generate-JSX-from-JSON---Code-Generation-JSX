@@ -22,7 +22,7 @@ function generateComponent(obj){
         for(let i=0;i<styles.length;i++){
             tag+=toCamelCase(styles[i])+':"'+obj.style[styles[i]]+'",'
         }
-        tag=tag.substr(0,tag.length-1)+"}}"
+        tag=tag+"}}"
     }
     if(obj.children !== undefined && obj.children.length>0){
         tag+=">";
