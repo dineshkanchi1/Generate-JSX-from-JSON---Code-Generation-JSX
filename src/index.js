@@ -17,12 +17,12 @@ import App from "./components/App";
  }
 function recur(obj){
     let tag = "<"
-    tag += obj.name+" "
+    tag += toTitleCase(obj.name)+" "
     if(obj.style!==undefined && Object.keys(obj.style).length>0){
         let styleKeys = Object.keys(obj.style)
         tag += "style={{"
         for(let i=0;i<styleKeys.length;i++){
-            tag+=styleKeys[i]+':"'+obj.style[styleKeys[i]]+'",'
+            tag+=toCamelCase(styleKeys[i])+':"'+obj.style[styleKeys[i]]+'",'
         }
         tag=tag+"}}"
     }
@@ -31,7 +31,7 @@ function recur(obj){
         for(let i=0;i<obj.children.length;i++){
             tag+=recur(obj.children[i])
         }
-        tag+="</"+obj.name+">"
+        tag+="</"+toTitleCase(obj.name)+">"
     }else{
         tag+="/>"
     }
