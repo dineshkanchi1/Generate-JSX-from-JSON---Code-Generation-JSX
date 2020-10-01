@@ -10,8 +10,7 @@ function toTitleCase(str){
     ).replace(" ","");
 }
 function toCamelCase(str){
-    str=str.replace("-"," ")
-    return str.replace(/\s(.)/g, function($1){return $1.toUpperCase();}).replace(/\s/g,'').replace(/^(.)/,function($1){return $1.toLowerCase();});
+    return str.replace("-"," ").replace(/\s(.)/g, function($1){return $1.toUpperCase();}).replace(/\s/g,'').replace(/^(.)/,function($1){return $1.toLowerCase();});
 }
 function generateComponent(obj){
     let tag = "<"
