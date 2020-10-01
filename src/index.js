@@ -16,7 +16,7 @@ function toCamelCase(str){
 function generateComponent(obj){
     let tag = "<"
     tag += toTitleCase(obj.name)+" "
-    if(obj.style!==undefined){
+    if(obj.style!==undefined && Object.keys(obj.style).length>0){
         let styles = Object.keys(obj.style)
         tag += "style={{"
         for(let i=0;i<styles.length;i++){
@@ -24,7 +24,7 @@ function generateComponent(obj){
         }
         tag=tag.substr(0,tag.length-1)+"}}"
     }
-    if(obj.children !== undefined){
+    if(obj.children !== undefined && obj.children.length>0){
         tag+=">";
         for(let i=0;i<obj.children.length;i++){
             tag+=generateComponent(obj.children[i])
