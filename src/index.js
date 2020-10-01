@@ -20,12 +20,12 @@ function generateComponent(obj){
         let styles = Object.keys(obj.style)
         tag += "style={{"
         for(let i=0;i<styles.length;i++){
-            tag+=toCamelCase(styles[i])+' : "'+obj.style[styles[i]]+'",'
+            tag+=toCamelCase(styles[i])+':"'+obj.style[styles[i]]+'",'
         }
         tag=tag+"}}"
     }
     if(obj.children !== undefined && obj.children.length>0){
-        tag+=">";
+        tag+=">\n";
         for(let i=0;i<obj.children.length;i++){
             tag+=generateComponent(obj.children[i])
         }
