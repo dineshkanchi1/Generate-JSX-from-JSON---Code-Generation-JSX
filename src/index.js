@@ -14,26 +14,26 @@ import App from "./components/App";
 //     return str.replace(/\s(.)/g, function($1){return $1.toUpperCase();}).replace(/\s/g,'').replace(/^(.)/,function($1){return $1.toLowerCase();});
 // }
 function recur(obj){
-    let retStr = "<"
-    retStr += obj.name+" "
+    let tag = "<"
+    tag += obj.name+" "
     if(obj.style!==undefined && Object.keys(obj.style).length>0){
-        let stypeKeys = Object.keys(obj.style)
-        retStr += "style={{"
-        for(let i=0;i<stypeKeys.length;i++){
-            retStr+=stypeKeys[i]+':"'+obj.style[stypeKeys[i]]+'",'
+        let styleKeys = Object.keys(obj.style)
+        tag += "style={{"
+        for(let i=0;i<styleKeys.length;i++){
+            tag+=styleKeys[i]+':"'+obj.style[styleKeys[i]]+'",'
         }
-        retStr=retStr.substr(0,retStr.length-1)+"}}"
+        tag=tag+"}}"
     }
     if(obj.children !== undefined && obj.children.length>0){
-        retStr+=">\n";
+        tag+=">\n";
         for(let i=0;i<obj.children.length;i++){
-            retStr+=recur(obj.children[i])
+            tag+=recur(obj.children[i])
         }
-        retStr+="</"+obj.name+">"
+        tag+="</"+obj.name+">"
     }else{
-        retStr+="/>"
+        tag+="/>"
     }
-    return retStr
+    return tag
 }
 function generateCodeFromObject(obj){
     return recur(obj)
