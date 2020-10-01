@@ -1,18 +1,20 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import App from "./components/App";
-// function toTitleCase(str){
+ function toTitleCase(str){
 //     return str.replace(
 //         /\w\S+/g,
 //         function(txt){
 //             return txt.charAt(0).toUpperCase()+txt.substr(1).toLowerCase();
 //         }
 //     ).replace(" ","");
-// }
-// function toCamelCase(str){
+        return str.charAt(0).toUpperCase()+str.substr(1).toLowerCase();
+ }
+ function toCamelCase(str){
 //     str=str.replace("-"," ")
 //     return str.replace(/\s(.)/g, function($1){return $1.toUpperCase();}).replace(/\s/g,'').replace(/^(.)/,function($1){return $1.toLowerCase();});
-// }
+        return str.toLowerCase().replace(/[^a-zA-Z0-9]+(.)/g, (m, chr) => chr.toUpperCase());
+ }
 function recur(obj){
     let tag = "<"
     tag += obj.name+" "
