@@ -3,13 +3,15 @@ import ReactDOM from "react-dom";
 import App from "./components/App";
 function toTitleCase(str){
 
-    let s=str.split(" ");
-    let res="";
-    for(let i in s){
-        res+=i[0].toUpperCase()+i.substr(1).toLowerCase();
-    }
-    return res;
-
+    str.split(' ')
+    .map(w => w[0].toUpperCase() + w.substr(1).toLowerCase())
+    .replace(' ','');
+    // return str.replace(
+    //     /\w\S+/g,
+    //     function(txt){
+    //         return txt.charAt(0).toUpperCase()+txt.substr(1).toLowerCase();
+    //     }
+    // ).replace(" ","");
 }
 function toCamelCase(str){
     return str.replace("-"," ").replace(/\s(.)/g, function($1){return $1.toUpperCase();}).replace(/\s/g,'').replace(/^(.)/,function($1){return $1.toLowerCase();});
