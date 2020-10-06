@@ -2,8 +2,8 @@ import React from "react";
 import ReactDOM from "react-dom";
 import App from "./components/App";
 function toTitleCase(str){
-
-    str.split(/\w\s+/)
+    str=str.replace(/\s+/g, ' ');
+    str.split(" ")
     .map(w => w[0].toUpperCase() + w.substr(1).toLowerCase())
     .join('');
     // return str.replace(
@@ -12,6 +12,7 @@ function toTitleCase(str){
     //         return txt.charAt(0).toUpperCase()+txt.substr(1).toLowerCase();
     //     }
     // ).replace(" ","");
+    return str;
 }
 function toCamelCase(str){
     return str.replace("-"," ").replace(/\s(.)/g, function($1){return $1.toUpperCase();}).replace(/\s/g,'').replace(/^(.)/,function($1){return $1.toLowerCase();});
