@@ -3,7 +3,7 @@ import ReactDOM from "react-dom";
 import App from "./components/App";
 function toTitleCase(str){
 
-    str.split(' ')
+    str.split(/\s+/)
     .map(w => w[0].toUpperCase() + w.substr(1).toLowerCase())
     .join('');
     // return str.replace(
