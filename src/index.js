@@ -5,7 +5,7 @@ function toTitleCase(str){
 
     str.split(' ')
     .map(w => w[0].toUpperCase() + w.substr(1).toLowerCase())
-    .replace(' ','');
+    .join('');
     // return str.replace(
     //     /\w\S+/g,
     //     function(txt){
