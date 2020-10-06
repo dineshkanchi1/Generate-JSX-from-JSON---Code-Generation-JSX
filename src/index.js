@@ -3,19 +3,21 @@ import ReactDOM from "react-dom";
 import App from "./components/App";
 function toTitleCase(str){
     str=str.replace(/\s+/g, ' ');
-    str.split(" ")
+    return str.split(" ")
     .map(w => w[0].toUpperCase() + w.substr(1).toLowerCase())
     .join('');
-    // return str.replace(
-    //     /\w\S+/g,
-    //     function(txt){
-    //         return txt.charAt(0).toUpperCase()+txt.substr(1).toLowerCase();
-    //     }
-    // ).replace(" ","");
-    return str;
 }
 function toCamelCase(str){
-    return str.replace("-"," ").replace(/\s(.)/g, function($1){return $1.toUpperCase();}).replace(/\s/g,'').replace(/^(.)/,function($1){return $1.toLowerCase();});
+    str=str.replace("-"," ").replace(/\s+/g, " ");
+    return str.split(' ')
+    .map(function(word,index){
+        if(index == 0){
+          return word.toLowerCase();
+        }
+        return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();
+      }).join('');
+
+    //return str.replace("-"," ").replace(/\s(.)/g, function($1){return $1.toUpperCase();}).replace(/\s/g,'').replace(/^(.)/,function($1){return $1.toLowerCase();});
 }
 function generateComponent(obj){
     let tag = "<"
