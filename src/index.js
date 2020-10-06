@@ -17,7 +17,6 @@ function toCamelCase(str){
         return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();
       }).join('');
 
-    //return str.replace("-"," ").replace(/\s(.)/g, function($1){return $1.toUpperCase();}).replace(/\s/g,'').replace(/^(.)/,function($1){return $1.toLowerCase();});
 }
 function generateComponent(obj){
     let tag = "<"
